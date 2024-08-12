@@ -31,6 +31,19 @@
             border-radius: 15px;
             display: inline-block;
             text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.7); /* Stronger shadow for better contrast */
+            position: relative;
+        }
+
+        h1::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: black;
+            z-index: -1;
+            border-radius: 15px;
         }
 
         .instagram-link img {
