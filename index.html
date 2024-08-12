@@ -24,23 +24,13 @@
         h1 {
             font-size: 48px;
             font-weight: bold;
-            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
             padding: 20px;
-            background: linear-gradient(45deg, #00ffff, #ffffff, #00ffff); /* Diamond shine effect gradient */
+            background: linear-gradient(45deg, #00ffff, #ffffff, #00ffff, #ff00ff); /* Brighter diamond colors */
             -webkit-background-clip: text;
             color: transparent;
             border-radius: 15px;
             display: inline-block;
-            animation: shine 2s infinite;
-        }
-
-        @keyframes shine {
-            0% {
-                background-position: 0%;
-            }
-            100% {
-                background-position: 200%;
-            }
+            text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.7); /* Stronger shadow for better contrast */
         }
 
         .instagram-link img {
