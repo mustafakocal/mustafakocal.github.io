@@ -22,43 +22,43 @@
             font-size: 48px;
             font-weight: bold;
             padding: 10px 20px;
-            background: linear-gradient(45deg, #00ffff, #ffffff, #00ffff, #ff00ff); /* Brighter diamond colors */
+            background: linear-gradient(45deg, #00ffff, #ffffff, #00ffff, #ff00ff); 
             -webkit-background-clip: text;
             color: transparent;
             display: inline-block;
-            text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.7); /* Stronger shadow for better contrast */
-            position: relative;
-            top: 50%;
-            left: 50%;
+            text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.7);
+            position: absolute;
+            top: 18%;
+            left: 55%;
             transform: translate(-50%, -50%);
             z-index: 1;
-            background-color: rgba(0, 0, 0, 0.7); /* Transparent black background */
+            background-color: rgba(0, 0, 0, 0.7);
             border-radius: 15px;
         }
 
         .creator, .helper {
             position: absolute;
-            right: 20px;
             font-size: 16px;
             font-weight: bold;
             padding: 5px 10px;
-            background: linear-gradient(45deg, #00ffff, #ffffff, #00ffff, #ff00ff); /* Same gradient as the main text */
+            background: linear-gradient(45deg, #00ffff, #ffffff, #00ffff, #ff00ff); 
             -webkit-background-clip: text;
             color: transparent;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Shadow for better contrast */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
             border-radius: 10px;
-            display: inline-block;
-            position: relative;
-            z-index: 2;
-            background-color: rgba(0, 0, 0, 0.7); /* Transparent black background */
+            background-color: rgba(0, 0, 0, 0.7);
         }
 
         .creator {
-            top: 20px;
+            top: 8%;
+            left: 20%;
+            transform: translate(-50%, -50%);
         }
 
         .helper {
-            top: 60px; /* Position below the creator text */
+            top: 14%;
+            left: 20%;
+            transform: translate(-50%, -50%);
         }
 
         .instagram-link {
@@ -69,17 +69,15 @@
         }
 
         .instagram-link img {
-            width: 50px; /* Adjust the size of the image */
+            width: 50px;
             height: 50px;
         }
     </style>
 </head>
 <body>
     <h1>Mustafa Koçal is the best</h1>
-    <!-- Creator and Helper text in the top right corner -->
     <div class="creator">Creator: Mustafa Koçal</div>
     <div class="helper">Helper: Emirhan Bilgiç</div>
-    <!-- Instagram link and image -->
     <a class="instagram-link" href="https://www.instagram.com/deathshinigami1" target="_blank">
         <img src="IMG_2217.png" alt="Instagram">
     </a>
