@@ -25,32 +25,31 @@
             font-size: 48px;
             font-weight: bold;
             padding: 20px;
-            background: linear-gradient(45deg, #00ffff, #ffffff, #00ffff, #ff00ff); /* Brighter diamond colors */
+            background: linear-gradient(45deg, #00ffff, #ffffff, #00ffff, #ff00ff);
             -webkit-background-clip: text;
             color: transparent;
             border-radius: 15px;
             display: inline-block;
-            text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.7); /* Stronger shadow for better contrast */
+            text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.7);
         }
 
         .instagram-link img {
-            width: 50px; /* Adjust the size of the image */
+            width: 50px;
             height: 50px;
-            margin-top: 20px; /* Top margin */
+            margin-top: 20px;
         }
 
-        /* New style for credits */
         .credits {
             position: absolute;
-            top: 10px; /* Space from the top of the page */
-            left: 10px; /* Space from the left of the page */
-            font-size: 12px; /* Font size */
-            line-height: 1.2; /* Line height */
-            background: linear-gradient(45deg, #00ffff, #ffffff, #00ffff, #ff00ff); /* Same gradient colors */
+            top: 10px;
+            left: 10px;
+            font-size: 12px;
+            line-height: 1.2;
+            background: linear-gradient(45deg, #00ffff, #ffffff, #00ffff, #ff00ff);
             -webkit-background-clip: text;
             color: transparent;
-            text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.7); /* Stronger shadow for better contrast */
-            text-align: left; /* Align text to the left */
+            text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.7);
+            text-align: left;
         }
     </style>
 </head>
@@ -62,14 +61,24 @@
     
     <h1>Mustafa Koçal is the best</h1>
     
-    <!-- Instagram link and image -->
     <a class="instagram-link" href="https://www.instagram.com/deathshinigami1" target="_blank">
         <img src="IMG_2217.png" alt="Instagram">
     </a>
 
-    <!-- Audio element for background music without fallback text -->
-    <audio autoplay loop>
+    <!-- Audio element for background music with controls and autoplay -->
+    <audio id="bg-music" autoplay loop>
         <source src="Heyecan.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
     </audio>
+
+    <script>
+    // Function to play the audio and handle autoplay restrictions
+    window.addEventListener('load', function() {
+        var audio = document.getElementById('bg-music');
+        audio.play().catch(function(error) {
+            console.log('Autoplay prevented:', error);
+        });
+    });
+    </script>
 </body>
 </html>
