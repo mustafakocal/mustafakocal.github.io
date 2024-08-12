@@ -51,6 +51,21 @@
             text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.7);
             text-align: left;
         }
+
+        .play-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #00ffff;
+            color: black;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .play-button:hover {
+            background-color: #00cccc;
+        }
     </style>
 </head>
 <body>
@@ -65,20 +80,22 @@
         <img src="IMG_2217.png" alt="Instagram">
     </a>
 
-    <!-- Audio element for background music with controls and autoplay -->
-    <audio id="bg-music" autoplay loop>
+    <!-- Audio element for background music -->
+    <audio id="bg-music">
         <source src="Heyecan.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
 
+    <!-- Button to start the music -->
+    <button class="play-button" onclick="playMusic()">Play Music</button>
+
     <script>
-    // Function to play the audio and handle autoplay restrictions
-    window.addEventListener('load', function() {
+    function playMusic() {
         var audio = document.getElementById('bg-music');
         audio.play().catch(function(error) {
-            console.log('Autoplay prevented:', error);
+            console.log('Error playing audio:', error);
         });
-    });
+    }
     </script>
 </body>
 </html>
