@@ -52,7 +52,7 @@
             text-align: left;
         }
 
-        .play-button, .about-button {
+        .play-button, .about-button, .like-button {
             margin-top: 20px;
             padding: 10px 20px;
             background-color: #00ffff; /* Light blue color */
@@ -63,7 +63,7 @@
             font-size: 16px;
         }
 
-        .play-button:hover, .about-button:hover {
+        .play-button:hover, .about-button:hover, .like-button:hover {
             background-color: #00cccc; /* Slightly darker blue on hover */
         }
 
@@ -99,6 +99,28 @@
             margin-right: 8px;
             color: black; /* Text color matching the Play Music button text color */
         }
+
+        .feature-unavailable {
+            position: absolute;
+            top: 80px; /* Adjust based on your design */
+            right: 20px;
+            font-size: 14px;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .feature-unavailable::before {
+            content: '';
+            display: inline-block;
+            width: 0;
+            height: 0;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-top: 10px solid #00ffff; /* Arrow color matching the Play Music button */
+            margin-bottom: 5px;
+        }
     </style>
 </head>
 <body>
@@ -129,6 +151,12 @@
     <div class="counter-container">
         <span class="eye-icon">👁️</span>
         <div class="counter" id="visitor-count">Loading...</div>
+    </div>
+
+    <!-- Feature Unavailable Notification -->
+    <div class="feature-unavailable">
+        <div></div>
+        This feature is currently unavailable
     </div>
 
     <!-- Audio element for background music -->
