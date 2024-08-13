@@ -104,13 +104,13 @@
         }
 
         .counter {
-            font-size: 20px; /* Slightly smaller font size */
+            font-size: 18px; /* Slightly smaller font size */
             margin-left: 8px;
             color: black; /* Text color matching the Play Music button text color */
         }
 
         .eye-icon {
-            font-size: 20px; /* Slightly smaller font size */
+            font-size: 18px; /* Slightly smaller font size */
             margin-right: 8px;
             color: black; /* Text color matching the Play Music button text color */
         }
@@ -145,6 +145,12 @@
         <span class="eye-icon">👁️</span>
         <div class="counter" id="visitor-count">Loading...</div>
     </div>
+
+    <!-- Audio element for background music -->
+    <audio id="bg-music">
+        <source src="Heyecan.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
 
     <script>
         function playMusic() {
