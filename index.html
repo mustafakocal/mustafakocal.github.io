@@ -67,6 +67,31 @@
             background-color: #00cccc; /* Slightly darker blue on hover */
         }
 
+        .about-button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #00ffff; /* Light blue color */
+            color: black;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .about-button:hover {
+            background-color: #00cccc; /* Slightly darker blue on hover */
+        }
+
+        /* About me section styling */
+        .about-me {
+            display: none; /* Initially hidden */
+            margin-top: 20px;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 5px;
+            text-align: center;
+        }
+
         /* Counter and eye icon positioning with updated background color and smaller size */
         .counter-container {
             position: absolute;
@@ -104,14 +129,17 @@
         <img src="IMG_2217.png" alt="Instagram">
     </a>
 
-    <!-- Audio element for background music -->
-    <audio id="bg-music">
-        <source src="Heyecan.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-    </audio>
-
     <!-- Button to start the music -->
     <button class="play-button" onclick="playMusic()">Play Music</button>
+
+    <!-- About Me Button -->
+    <button class="about-button" onclick="toggleAboutMe()">About Me</button>
+
+    <!-- About Me Section -->
+    <div class="about-me" id="about-me">
+        <h2>About Me</h2>
+        <p>I am successful in all sports, the smartest and most talented person in the world, and Fenerbahçe is the best club.</p>
+    </div>
 
     <!-- Visitor Counter Section -->
     <div class="counter-container">
@@ -127,6 +155,15 @@
             }).catch(function(error) {
                 console.log('Error playing audio:', error);
             });
+        }
+
+        function toggleAboutMe() {
+            var aboutMeSection = document.getElementById('about-me');
+            if (aboutMeSection.style.display === 'none' || aboutMeSection.style.display === '') {
+                aboutMeSection.style.display = 'block';
+            } else {
+                aboutMeSection.style.display = 'none';
+            }
         }
 
         // Initialize counter
