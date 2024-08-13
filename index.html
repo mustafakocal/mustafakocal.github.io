@@ -52,7 +52,7 @@
             text-align: left;
         }
 
-        .play-button, .about-button {
+        .play-button {
             margin-top: 20px;
             padding: 10px 20px;
             background-color: #00ffff;
@@ -63,21 +63,32 @@
             font-size: 16px;
         }
 
-        .play-button:hover, .about-button:hover {
+        .play-button:hover {
             background-color: #00cccc;
         }
 
-        .about-content {
-            display: none;
-            margin-top: 20px;
-            padding: 20px;
-            background-color: rgba(0, 0, 0, 0.8);
-            border-radius: 10px;
-            text-align: center;
+        /* Counter and eye icon positioning */
+        .counter-container {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.5); /* Background color for visibility */
+            padding: 10px;
+            border-radius: 5px;
         }
 
-        .about-content.active {
-            display: block;
+        .counter {
+            font-size: 24px;
+            margin-left: 10px;
+            color: white; /* Matching color with Play Music button */
+        }
+
+        .eye-icon {
+            font-size: 24px;
+            margin-right: 10px;
+            color: white; /* Matching color with Play Music button */
         }
     </style>
 </head>
@@ -93,42 +104,45 @@
         <img src="IMG_2217.png" alt="Instagram">
     </a>
 
-    <!-- Button to start the music -->
-    <button class="play-button" onclick="playMusic()">Play Music</button>
-
-    <!-- Button to show the About section -->
-    <button class="about-button" onclick="toggleAbout()">About Me</button>
-
-    <!-- Hidden About section -->
-    <div id="about-section" class="about-content">
-        <h2>About Mustafa Koçal</h2>
-        <p>Hello! I am Mustafa Koçal, a passionate developer with a love for technology and creativity. I excel in all sports, and I am recognized as the smartest and most talented person in the world. Also, Fenerbahçe is the best club ever!</p>
-    </div>
-
     <!-- Audio element for background music -->
     <audio id="bg-music">
         <source src="Heyecan.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
 
-    <script>
-    function playMusic() {
-        var audio = document.getElementById('bg-music');
-        audio.play().then(() => {
-            console.log('Music is playing');
-        }).catch(function(error) {
-            console.log('Error playing audio:', error);
-        });
-    }
+    <!-- Button to start the music -->
+    <button class="play-button" onclick="playMusic()">Play Music</button>
 
-    function toggleAbout() {
-        var aboutSection = document.getElementById('about-section');
-        if (aboutSection.classList.contains('active')) {
-            aboutSection.classList.remove('active');
-        } else {
-            aboutSection.classList.add('active');
+    <!-- Visitor Counter Section -->
+    <div class="counter-container">
+        <span class="eye-icon">👁️</span>
+        <div class="counter" id="visitor-count">Loading...</div>
+    </div>
+
+    <script>
+        function playMusic() {
+            var audio = document.getElementById('bg-music');
+            audio.play().then(() => {
+                console.log('Music is playing');
+            }).catch(function(error) {
+                console.log('Error playing audio:', error);
+            });
         }
-    }
+
+        // Initialize counter
+        function updateVisitorCount() {
+            // Get current count from local storage
+            let count = parseInt(localStorage.getItem('visitorCount')) || 0;
+            // Increment count
+            count++;
+            // Save updated count back to local storage
+            localStorage.setItem('visitorCount', count);
+            // Display updated count
+            document.getElementById('visitor-count').textContent = count;
+        }
+
+        // Call the function to update visitor count
+        updateVisitorCount();
     </script>
 </body>
 </html>
