@@ -52,7 +52,7 @@
             text-align: left;
         }
 
-        .play-button, .about-button, .game-button {
+        .play-button, .about-button {
             margin-top: 20px;
             padding: 10px 20px;
             background-color: #00ffff; /* Light blue color */
@@ -63,7 +63,7 @@
             font-size: 16px;
         }
 
-        .play-button:hover, .about-button:hover, .game-button:hover {
+        .play-button:hover, .about-button:hover {
             background-color: #00cccc; /* Slightly darker blue on hover */
         }
 
@@ -121,28 +121,6 @@
             border-top: 10px solid #00ffff; /* Arrow color matching the Play Music button */
             margin-bottom: 5px;
         }
-
-        /* Game container styles */
-        #game-container {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            display: none;
-            width: 320px;
-            height: 480px;
-            background: #87CEEB; /* Sky blue background */
-            border: 2px solid #000;
-            overflow: hidden;
-            position: relative;
-        }
-
-        #game-canvas {
-            width: 100%;
-            height: 100%;
-            background: #87CEEB; /* Sky blue background */
-            display: block;
-        }
     </style>
 </head>
 <body>
@@ -163,9 +141,6 @@
     <!-- About Me Button -->
     <button class="about-button" onclick="toggleAboutMe()">About Me</button>
 
-    <!-- Play Game Button -->
-    <button class="game-button" onclick="startGame()">Play Game</button>
-
     <!-- About Me Section -->
     <div class="about-me" id="about-me">
         <h2>About Me</h2>
@@ -182,11 +157,6 @@
     <div class="feature-unavailable">
         <div></div>
         Not working!
-    </div>
-
-    <!-- Game Container -->
-    <div id="game-container">
-        <canvas id="game-canvas"></canvas>
     </div>
 
     <!-- Audio element for background music -->
@@ -228,98 +198,6 @@
 
         // Call the function to update visitor count on page load
         window.onload = updateVisitorCount;
-
-        // Function to start the game
-        function startGame() {
-            document.getElementById('game-container').style.display = 'block';
-            var canvas = document.getElementById('game-canvas');
-            var ctx = canvas.getContext('2d');
-            var bird = { x: 50, y: 150, width: 30, height: 30, gravity: 0.6, velocity: 0, lift: -15 };
-            var pipes = [];
-            var pipeWidth = 50;
-            var pipeGap = 150;
-            var frame = 0;
-
-            canvas.width = 320;
-            canvas.height = 480;
-
-            function drawBird() {
-                ctx.fillStyle = 'yellow';
-                ctx.fillRect(bird.x, bird.y, bird.width, bird.height);
-            }
-
-            function drawPipes() {
-                ctx.fillStyle = 'green';
-                for (var i = 0; i < pipes.length; i++) {
-                    var pipe = pipes[i];
-                    ctx.fillRect(pipe.x, 0, pipeWidth, pipe.top);
-                    ctx.fillRect(pipe.x, canvas.height - pipe.bottom, pipeWidth, pipe.bottom);
-                }
-            }
-
-            function updatePipes() {
-                if (frame % 90 === 0) {
-                    var topHeight = Math.random() * (canvas.height - pipeGap - 40) + 20;
-                    var bottomHeight = canvas.height - pipeGap - topHeight;
-                    pipes.push({ x: canvas.width, top: topHeight, bottom: bottomHeight });
-                }
-
-                for (var i = pipes.length - 1; i >= 0; i--) {
-                    var pipe = pipes[i];
-                    pipe.x -= 2; // Move pipes to the left
-                    if (pipe.x + pipeWidth < 0) {
-                        pipes.splice(i, 1); // Remove off-screen pipes
-                    }
-                }
-            }
-
-            function updateBird() {
-                bird.velocity += bird.gravity;
-                bird.y += bird.velocity;
-
-                if (bird.y + bird.height > canvas.height) {
-                    bird.y = canvas.height - bird.height;
-                    bird.velocity = 0;
-                }
-                if (bird.y < 0) {
-                    bird.y = 0;
-                    bird.velocity = 0;
-                }
-            }
-
-            function detectCollision() {
-                for (var i = 0; i < pipes.length; i++) {
-                    var pipe = pipes[i];
-                    if (bird.x < pipe.x + pipeWidth && bird.x + bird.width > pipe.x && (bird.y < pipe.top || bird.y + bird.height > canvas.height - pipe.bottom)) {
-                        alert('Game Over!');
-                        document.getElementById('game-container').style.display = 'none';
-                        pipes = [];
-                        bird.y = 150;
-                        bird.velocity = 0;
-                        return;
-                    }
-                }
-            }
-
-            function gameLoop() {
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-                drawBird();
-                drawPipes();
-                updatePipes();
-                updateBird();
-                detectCollision();
-                frame++;
-                requestAnimationFrame(gameLoop);
-            }
-
-            gameLoop();
-
-            window.addEventListener('keydown', function(event) {
-                if (event.code === 'Space') {
-                    bird.velocity = bird.lift;
-                }
-            });
-        }
     </script>
 </body>
 </html>
