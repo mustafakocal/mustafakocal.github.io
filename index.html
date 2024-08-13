@@ -52,7 +52,7 @@
             text-align: left;
         }
 
-        .play-button, .about-button, .like-button {
+        .play-button, .about-button {
             margin-top: 20px;
             padding: 10px 20px;
             background-color: #00ffff; /* Light blue color */
@@ -63,7 +63,7 @@
             font-size: 16px;
         }
 
-        .play-button:hover, .about-button:hover, .like-button:hover {
+        .play-button:hover, .about-button:hover {
             background-color: #00cccc; /* Slightly darker blue on hover */
         }
 
@@ -77,7 +77,7 @@
             color: white;
         }
 
-        .counter-container, .like-container {
+        .counter-container {
             position: absolute;
             top: 20px;
             right: 20px;
@@ -88,20 +88,16 @@
             border-radius: 5px;
         }
 
-        .counter, .like-count {
+        .counter {
             font-size: 18px; /* Slightly smaller font size */
             margin-left: 8px;
             color: black; /* Text color matching the Play Music button text color */
         }
 
-        .eye-icon, .heart-icon {
+        .eye-icon {
             font-size: 18px; /* Slightly smaller font size */
             margin-right: 8px;
             color: black; /* Text color matching the Play Music button text color */
-        }
-
-        .like-container {
-            margin-top: 10px; /* Space between the counter and like button */
         }
     </style>
 </head>
@@ -135,13 +131,6 @@
         <div class="counter" id="visitor-count">Loading...</div>
     </div>
 
-    <!-- Like Button Section -->
-    <div class="like-container">
-        <span class="heart-icon">❤️</span>
-        <button class="like-button" onclick="likePage()">Like</button>
-        <div class="like-count" id="like-count">0</div>
-    </div>
-
     <!-- Audio element for background music -->
     <audio id="bg-music">
         <source src="Heyecan.mp3" type="audio/mpeg">
@@ -169,30 +158,18 @@
 
         // Initialize counter
         function updateVisitorCount() {
+            // Get current count from local storage
             let count = parseInt(localStorage.getItem('visitorCount')) || 0;
+            // Increment count
             count++;
+            // Save updated count back to local storage
             localStorage.setItem('visitorCount', count);
+            // Display updated count
             document.getElementById('visitor-count').textContent = count;
         }
 
-        // Initialize likes
-        function updateLikeCount() {
-            let likes = parseInt(localStorage.getItem('likeCount')) || 0;
-            document.getElementById('like-count').textContent = likes;
-        }
-
-        function likePage() {
-            let likes = parseInt(localStorage.getItem('likeCount')) || 0;
-            likes++;
-            localStorage.setItem('likeCount', likes);
-            document.getElementById('like-count').textContent = likes;
-        }
-
-        // Call functions to initialize counts on page load
-        window.onload = function() {
-            updateVisitorCount();
-            updateLikeCount();
-        };
+        // Call the function to update visitor count on page load
+        window.onload = updateVisitorCount;
     </script>
 </body>
-</html> 
+</html>
