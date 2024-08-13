@@ -52,7 +52,7 @@
             text-align: left;
         }
 
-        .play-button {
+        .play-button, .about-button {
             margin-top: 20px;
             padding: 10px 20px;
             background-color: #00ffff;
@@ -63,8 +63,21 @@
             font-size: 16px;
         }
 
-        .play-button:hover {
+        .play-button:hover, .about-button:hover {
             background-color: #00cccc;
+        }
+
+        .about-content {
+            display: none;
+            margin-top: 20px;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.8);
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .about-content.active {
+            display: block;
         }
     </style>
 </head>
@@ -80,14 +93,23 @@
         <img src="IMG_2217.png" alt="Instagram">
     </a>
 
+    <!-- Button to start the music -->
+    <button class="play-button" onclick="playMusic()">Play Music</button>
+
+    <!-- Button to show the About section -->
+    <button class="about-button" onclick="toggleAbout()">About Me</button>
+
+    <!-- Hidden About section -->
+    <div id="about-section" class="about-content">
+        <h2>About Mustafa Koçal</h2>
+        <p>Hello! I am Mustafa Koçal, a passionate developer with a love for technology and creativity. I excel in all sports, and I am recognized as the smartest and most talented person in the world. Also, Fenerbahçe is the best club ever!</p>
+    </div>
+
     <!-- Audio element for background music -->
     <audio id="bg-music">
         <source src="Heyecan.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
-
-    <!-- Button to start the music -->
-    <button class="play-button" onclick="playMusic()">Play Music</button>
 
     <script>
     function playMusic() {
@@ -97,6 +119,15 @@
         }).catch(function(error) {
             console.log('Error playing audio:', error);
         });
+    }
+
+    function toggleAbout() {
+        var aboutSection = document.getElementById('about-section');
+        if (aboutSection.classList.contains('active')) {
+            aboutSection.classList.remove('active');
+        } else {
+            aboutSection.classList.add('active');
+        }
     }
     </script>
 </body>
